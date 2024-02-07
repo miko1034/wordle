@@ -22,11 +22,5 @@ def checkGuess(userInput, chosenWord):
             gray.append(userInput[i])
     return [green,yellow,gray]
 
-def next(guess_count):
-    if guess_count > 6:
-        return 0
-    else:
-        pass
-
 
 
