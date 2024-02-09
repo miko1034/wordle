@@ -5,16 +5,17 @@ secretWord = getRandomWord()
 print(secretWord)
 
 guesses=6
+to_print = ""
 
 while guesses > 0:
     usrinp = str(input("Enter guess:"))
     if len(usrinp) == 5:
-
-        positions = checkGuess(usrinp,secretWord)
         if usrinp == secretWord:
             print(f"you win! the word was {secretWord}")
             break
         else:
+            positions = checkGuess(usrinp,secretWord)
+            print(positions)
             fragmentedGuess = list(usrinp)
             output = []
             for i in range(len(fragmentedGuess)):
