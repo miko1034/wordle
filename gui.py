@@ -14,6 +14,12 @@ def raiseframe(frame):
     frame.tkraise()
     print("raised")
 
+def placeLetters(letters,frames):
+    for i in range(len(frames)):
+        for j in range(len(letters)):
+            letters[j].place(x=100*j,y=40*j)
+        
+
 def submit(secretWord):
     usrInput = guessFieldVar.get()
     print(f"usrInput: {usrInput}")
@@ -23,18 +29,16 @@ def submit(secretWord):
     for i in range(len(fragmentedGuess)):
         if fragmentedGuess[i] in positions[0]:
             for j in range(len(positions[0])):
-                allLetters[i-1][j] = fragmentedGuess[i]
-                allLetters[i-1][j].configure(fg="green")
+                allLetters[i-1][j].config(text=fragmentedGuess[i],fg="green")
                 #update colour of i letter here to green
         elif fragmentedGuess[i] in positions[1]:
             for j in range(len(positions[0])):
-                allLetters[i-1][j] = fragmentedGuess[i]
-                allLetters[i-1][j].configure(fg="orange")
+                allLetters[i-1][j].config(text=fragmentedGuess[i],fg="orange")
                 #update colour of i letter here to orange
         else:
-            allLetters[i-1][j] = "*"
-            allLetters[i-1][j].configure(fg="red")
-            #update the remaining letters to * and set colour to red
+            for j in range(len(positions[0])):
+                allLetters[i-1][j].config(text="*",fg="red")
+                #update the remaining letters to * and set colour to red
 
 
 
@@ -78,6 +82,6 @@ allLetters = [r1Letters,r2Letters,r3Letters,r4Letters,r5Letters,r6Letters]
 
 guessFieldVar = StringVar()
 guessField = Entry(mainFrame,textvariable=guessFieldVar).place(relx=0.5,rely=0.8,anchor=CENTER,width=170,height=50)
-submitButton = Button(mainFrame, text="Submit",command=submit(secretWord)).place(x=290,rely=0.765)
+submitButton = Button(mainFrame, text="Submit",command=lambda:submit(secretWord)).place(x=290,rely=0.765)
 #mainloop
 window.mainloop()
