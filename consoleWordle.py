@@ -24,7 +24,7 @@ while guesses > 0:
                 elif fragmentedGuess[i] in positions[1]:
                     output.append(colored(f"{fragmentedGuess[i]}", "yellow"))
                 else:
-                    output.append(colored("*", 'light_grey'))
+                    output.append(colored("*", 'red'))
             output = "".join(output)
             print(output)
     else:
