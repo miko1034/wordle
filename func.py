@@ -22,3 +22,4 @@ def checkGuess(userInput, chosenWord):
             gray.append(userInput[i])
     return [green,yellow,gray]
 
+
